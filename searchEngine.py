@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1-39pmgq2dhgUMl6gwRE2j3TPH77wp9bh
 """
 
-#Ahmet Mirza Duru / 2019301183
+
 
 #1-a
 def getPage(url): #Everything comes from this code. Once you entered an url, it will give you an html code for that url that means a string.
@@ -100,10 +100,7 @@ def crawl_web(url):
   myRanksIndex = urlRanker(myGraph)
   return myRanksIndex , myIndex
 
-#1-a Result reporting part.
-print(crawl_web('https://searchengineplaces.com.tr/'))
 
-#1-b
 def lookUp(index , keyword ):
   if keyword in index:
     print('Keyword: ' + keyword)
@@ -115,7 +112,7 @@ def lookUp(index , keyword ):
     print('Keyword: ' + str(keyword))
     print('0 results found.')
 
-#1-c
+
 def lookUpLink(index , url) :
   urls = []
   for kw in index:
@@ -138,61 +135,4 @@ def lookUpLink(index , url) :
     for element in keys:
       print(element)
 
-#2
-def frequencyOfWord(anyString):
-  myDict = {}
-  content_corrected = anyString.lower()
-  content_corrected_list = content_corrected.split()
-  content = []
-  for element in content_corrected_list:
-    if element[-1] == '.' or element[-1] == ',' or element[-1] == ';' or element[-1] == ':':
-      element = element[:-1]
-    content.append(element)
-  keys = []
-  for words in content:
-    if words not in keys:
-      keys.append(words)
-  
-  for words in content:
-    if words not in myDict:     
-      myDict[words] = 1
-      
-    else:
-      myDict[words] = myDict[words] + 1
-  print('Words: ')
-  for words in keys:
-    print ( "'" + words + "'" + ' : ' + str(myDict[words]) + ",")
 
-#3
-class Rectangle() :
-  """ A class represents a Rectangle's side lengths."""
-  def __init__(self , width , length):
-    self.width = width
-    self.length = length
-#3-a
-  def area(self):
-    return self.width*self.length
-#3-b
-  def diagonal(self) :
-    squaredSum = self.width**2 + self.length**2
-    return squaredSum**(1/2)
-rec1 = Rectangle(5,12)
-print(rec1.area())
-print(rec1.diagonal())
-#3-c
-class Rectangle (Rectangle):
-  def __eq__(self , other):
-    return (self.width == other.width and self.length == other.length) or (self.length == other.width and self.width == other.length)
-
-#3-d
-class Rectangle (Rectangle) :
-
-  def __add__(self, other):
-
-    return Rectangle(self.width + other.width , self.length + other.length)
-
-#3-e
-class Rectangle(Rectangle) :
-
-  def __str__(self) :
-    return 'Rectangle with width ' + str(self.width) + ' and height ' + str(self.length)
